@@ -13,6 +13,6 @@ WHERE SOH.Status = 4 -- Rejected
 -- + Quite good for query plan (statistics)
 
 -- cons
--- - Extremly hard/impossible to mantain
--- - Can easily produce bugs
 -- - Completly unreadable
+-- - Extremly hard/impossible to mantain
+-- - Can easily produce bugs or misunderstandings
