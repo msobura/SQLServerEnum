@@ -1,12 +1,12 @@
 USE AdventureWorks2008R2
 GO
 
-IF EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[Sales].[vSalesOrderHeader_Approved]'))
-	DROP VIEW [Sales].[vSalesOrderHeader_Approved]
+IF EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'Sales.vSalesOrderHeader_Approved'))
+	DROP VIEW Sales.vSalesOrderHeader_Approved
 GO
 
-IF EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[Sales].[vSalesOrderHeader_Rejected]'))
-	DROP VIEW [Sales].[vSalesOrderHeader_Rejected]
+IF EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'Sales.vSalesOrderHeader_Rejected'))
+	DROP VIEW Sales.vSalesOrderHeader_Rejected
 GO
 
 CREATE VIEW Sales.vSalesOrderHeader_Approved
@@ -35,6 +35,6 @@ FROM Sales.vSalesOrderHeader_Rejected
 -- + Good for statistics
 
 -- cons
--- - Require a lot of work to mantain.
---     Change needs to be able to table and view(s).
---     When name of the view changes we have to go through whole database.
+-- - Require a lot of work to maintain
+--     Change needs to be apply to table and view(s)
+--     When name of the view changes we have to go through whole database and replace it

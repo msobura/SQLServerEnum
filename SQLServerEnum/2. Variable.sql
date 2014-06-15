@@ -17,6 +17,6 @@ WHERE SOH.Status = @Rejected
 -- + Reusable (in one scope)
 
 -- cons
--- - Hard to mantaind
+-- - Hard to maintain
 -- - Can easily produce bugs
 -- - Bad for statistics

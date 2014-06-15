@@ -47,9 +47,9 @@ SELECT
 FROM Sales.SalesOrderHeader AS SOH
 GROUP BY SOH.Status
 
-IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[Sales].[SalesOrderHeader]') AND name = N'IX_SalesOrderHeader_Status')
-	DROP INDEX [IX_SalesOrderHeader_Status] ON [Sales].[SalesOrderHeader]
+IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'Sales.SalesOrderHeader') AND name = N'IX_SalesOrderHeader_Status')
+	DROP INDEX IX_SalesOrderHeader_Status ON Sales.SalesOrderHeader
 GO
 
-CREATE INDEX IX_SalesOrderHeader_Status ON Sales.SalesOrderHeader (Status)
+CREATE INDEX IX_SalesOrderHeader_Status ON Sales.SalesOrderHeader ([Status])
 GO
