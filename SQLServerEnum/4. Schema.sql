@@ -59,7 +59,7 @@ GO
 -- cons
 -- - Require a change in how the queries are written
 -- - Can't be used in indexed views
--- - Problemtic with multiple const values
+-- - Not very accurate when IN operator is used
 
 /*
     Extend the basic enum view
