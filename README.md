@@ -3,6 +3,8 @@
 
 Every database developer has to deal with enum values. They often come in a form of system tables. I've found (and worked) at least 4 different ways of dealing with them.
 
+Unfortunately, currently Microsoft is not interested in giving us the solution for this problem, e.g. https://connect.microsoft.com/SQLServer/feedback/details/254293/allow-literals-and-read-only-table-data-to-be-represented-as-enums
+
 Magic numbers
 -------------
 	Pros:
@@ -82,7 +84,10 @@ Schema with static views
 		It has to be filtered in this way:
 			OrderStatusID IN (SELECT Approved FROM Enum.vSalesOrderHeader_Status)
 	
-	- Can't be used in indexed views (only const value can be used in indexed views).
+	- Probably it differs even more when it comes to multiple const values in IN operator, e.g.
+		Instead of:
+			OrderStatusID = (3, 4, 6)
+		It has to be filter with JOIN to the view
+			JOIN Enum.vSalesOrderHeader_Status AS SOHS ON SOH.Status = SOHS.Backordered OR SOH.Status = SOHS.Rejected OR SOH.Status = SOHS.Cancelled
 	
-	- Problematic with multiple const values
-		Unfortunately query optimizer is not able to estimate accurate number of rows when the operator IN is used. Query optimizer can’t estimate accurate number of rows even when the underling view is declared on top of const values.
+	- Can't be used in indexed views (only const value can be used in indexed views).

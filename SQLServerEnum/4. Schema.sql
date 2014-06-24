@@ -59,7 +59,6 @@ GO
 -- cons
 -- - Require a change in how the queries are written
 -- - Can't be used in indexed views
--- - Not very accurate when IN operator is used
 
 /*
     Extend the basic enum view
@@ -171,11 +170,6 @@ WHERE SOH.Status IN (
 	)
 GO
 
-SELECT COUNT(*)
-FROM Sales.SalesOrderHeader AS SOH
-WHERE SOH.Status IN (3, 4, 6)
-GO
-
 /*
     Query without the const values with most accurate plan when it comes to the estimated number of rows.
 */
@@ -195,6 +189,20 @@ GO
 
 SELECT COUNT(*)
 FROM cteSalesOrderHeader
+
+SELECT COUNT(*)
+FROM Sales.SalesOrderHeader AS SOH
+WHERE SOH.Status IN (3, 4, 6)
+GO
+
+/*
+    Query with identical execution plan as the query with multiple const values in IN operator
+*/
+SELECT COUNT(*)
+FROM Sales.SalesOrderHeader AS SOH
+    JOIN Enum.vSalesOrderHeader_Status AS SOHS ON SOH.Status = SOHS.Backordered
+        OR SOH.Status = SOHS.Rejected
+        OR SOH.Status = SOHS.Cancelled
 
 SET STATISTICS IO OFF
 SET STATISTICS TIME OFF
