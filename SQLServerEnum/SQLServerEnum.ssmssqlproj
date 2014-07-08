@@ -36,6 +36,12 @@
           <AssociatedConnUserName />
           <FullPath>4. Schema.sql</FullPath>
         </FileNode>
+        <FileNode Name="4b. Generator.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>4b. Generator.sql</FullPath>
+        </FileNode>
         <FileNode Name="5. Cleanup.sql">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />

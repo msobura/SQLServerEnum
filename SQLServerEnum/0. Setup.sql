@@ -1,10 +1,10 @@
 USE AdventureWorks2008R2
 GO
 
-DECLARE @Count int;
+DECLARE @count int;
 
 SELECT
-	@Count = COUNT(*)
+	@count = COUNT(*)
 FROM Sales.SalesOrderHeader AS SOH
 
 DECLARE
@@ -16,11 +16,11 @@ DECLARE
 	@cancelled int;
 	
 SELECT
-	@shipped = FLOOR(@Count * 0.5),
-	@approved = FLOOR(@Count * 0.7),
-	@inprocess = FLOOR(@Count * 0.8),
-	@cancelled = FLOOR(@Count * 0.88),
-	@rejected = FLOOR(@Count * 0.95);
+	@shipped = FLOOR(@count * 0.5),
+	@approved = FLOOR(@count * 0.7),
+	@inprocess = FLOOR(@count * 0.8),
+	@cancelled = FLOOR(@count * 0.88),
+	@rejected = FLOOR(@count * 0.95);
 
 WITH cteSOH AS (
 	SELECT

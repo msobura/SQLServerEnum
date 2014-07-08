@@ -196,7 +196,7 @@ WHERE SOH.Status IN (3, 4, 6)
 GO
 
 /*
-    Query with identical execution plan as the query with multiple const values in IN operator
+    Query with identical execution plan as the query with multiple const values in operator IN
 */
 SELECT COUNT(*)
 FROM Sales.SalesOrderHeader AS SOH
