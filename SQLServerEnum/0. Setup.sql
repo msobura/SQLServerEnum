@@ -46,6 +46,7 @@ SELECT
 	COUNT(*)
 FROM Sales.SalesOrderHeader AS SOH
 GROUP BY SOH.Status
+ORDER BY SOH.Status
 
 IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'Sales.SalesOrderHeader') AND name = N'IX_SalesOrderHeader_Status')
 	DROP INDEX IX_SalesOrderHeader_Status ON Sales.SalesOrderHeader

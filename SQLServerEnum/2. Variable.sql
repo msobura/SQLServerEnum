@@ -20,3 +20,7 @@ WHERE SOH.Status = @Rejected
 -- - Hard to maintain
 -- - Can easily produce bugs
 -- - Bad for statistics
+
+SELECT
+    [Estimated number of rows] = CAST(COUNT(*) AS float) / CAST(COUNT(DISTINCT SOH.Status) AS float)
+FROM Sales.SalesOrderHeader AS SOH

@@ -206,3 +206,9 @@ FROM Sales.SalesOrderHeader AS SOH
 
 SET STATISTICS IO OFF
 SET STATISTICS TIME OFF
+
+/*
+    It seems that there are two options. Either:
+    - write each query using JOIN operator
+    - create view and get used to extra operator (consts scan)    
+*/
